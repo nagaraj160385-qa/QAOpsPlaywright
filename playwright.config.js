@@ -24,6 +24,7 @@ const config = ({
     {
       browserName: 'chromium',
       headless: true,
+      trace: 'retain-on-failure'
        },
 
 });
