@@ -2,7 +2,7 @@
  const {POManager} = require('../pageobjects/POManager');
 
 
- test.only('Client App login', async ({page})=>
+ test('Client App login', async ({page})=>
  {
    const poManager = new POManager(page);
     //js file- Login js, DashboardPage
@@ -12,9 +12,12 @@
      const password="Test@123";
      const productName = "ZARA COAT 3";
      const products = page.locator(".card-body");
+
      const loginPage = poManager.getLoginPage();
+
      await loginPage.goTo();
      await loginPage.validLogin(username,password);
+     
      const dashboardPage = poManager.getDashboardPage();
      await dashboardPage.searchProductAddCart(productName);
      await dashboardPage.navigateToCart();

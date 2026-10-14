@@ -25,3 +25,4 @@ test('page context test case', async({page})=>
     expect(await page1).toHaveTitle("Google");
 
 });
+
