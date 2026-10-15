@@ -21,10 +21,10 @@ test('End to End Test cases using playwright getByLocators', async({page})=>
     await page.waitForLoadState('networkidle');
     await page.locator(".card-body b").first().waitFor();
     await page.locator(".card-body").filter({hasText:productName}).getByRole("button",{name:" Add To Cart"}).click();
+    await expect(page.getByText("Product Added To Cart")).toBeVisible();
     await page.getByRole("listitem").getByRole("button",{name:"Cart"}).click(); 
 
-    await page.locator("div li").first().waitFor();
-    await expect(page.getByText(productName)).toBeVisible();
+    await expect(page.getByText(productName, {exact:true})).toBeVisible();
     await page.getByRole("button",{name:"Checkout"}).click(); 
 
     await page.getByPlaceholder("Select Country").pressSequentially("ind",{delay:1000}); 
