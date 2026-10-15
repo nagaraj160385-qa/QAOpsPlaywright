@@ -28,7 +28,7 @@ test('End to End Test cases using playwright getByLocators', async({page})=>
     await page.getByRole("button",{name:"Checkout"}).click(); 
 
     await page.getByPlaceholder("Select Country").pressSequentially("ind",{delay:1000}); 
-    await page.getByRole("button",{name:"India"}).nth(1).click();  
+    await page.locator(".ta-results").getByRole("button",{name:/India$/}).click();
    // await page.pause(); 
    await page.getByText("PLACE ORDER").click(); 
    await expect(page.getByText(" Thankyou for the order. ")).toBeVisible();
